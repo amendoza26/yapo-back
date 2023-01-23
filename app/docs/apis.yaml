@@ -1,0 +1,62 @@
+openapi: 3.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: Yapo
+    url: http://localhost:5000/api
+info:
+  description: Documentacion de los endpoints de Yapo
+  version: "1.0.0"
+  title: Api Docs
+tags:
+  - name: musica
+    description: Endpoint Yapo
+paths:
+ /musica:
+    post:
+      tags:
+        - musica
+      summary: Obtener informacion referente al artista
+      description: Endpoint para obtener informacion referente al artista
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                artista:
+                  type: string
+                  example: Radiohead
+      responses:
+        '200':
+          description: info de artista obtenido
+        '400':
+          description: Se ha producido un error
+ /musica/favoritos:
+    post:
+      tags:
+        - musica
+      summary: Agregar como favoritos en MongoDB
+      description: Endpoint para agregar como favoritos ciertos campos a una base de datos MongoDB
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                artista:
+                  type: string
+                  example: Radiohead
+                cancionId:
+                  type: intenger
+                  example: 1254
+                usuario:
+                  type: string
+                  example: testUsuario
+                ranking:
+                  type: string
+                  example: 5/5
+      responses:
+        '200':
+          description: agregado satisfactoriamente
+        '400':
+          description: Se ha producido un error
